@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors — Landing */
+  --color-primary: #22c55e;
+  --color-accent: #00ff73;
+  --color-emerald-deep: #061a13;
+  --color-emerald-card: #0a251c;
+  --color-emerald-border: #163d2e;
+
+  /* Colors — Upload page (unified under same green family) */
+  --color-primary-hover: #2bc95f;
+  --color-background-dark: #0b1a11;
+  --color-surface-dark: #0f2618;
+  --color-border-dark: #1a3a26;
+
+  /* Colors — Dashboard */
+  --color-neon-green: #2cfb83;
+  --color-dark-green: #061a10;
+  --color-card-bg: #0a1f14;
+  --color-teal-accent: #0ea5e9;
+  --color-dashboard-bg: #040d08;
+
+  /* Fonts */
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-body: "Noto Sans", sans-serif;
+
+  /* Border Radius */
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* Animations */
+  --animate-pulse-slow: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-delayed: float 6s ease-in-out 3s infinite;
+  --animate-neon-glow: neon-glow 2s ease-in-out infinite alternate;
+  --animate-shimmer: shimmer 2s infinite;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes neon-glow {
+  from {
+    box-shadow:
+      0 0 20px #22c55e,
+      0 0 40px #22c55e;
+  }
+  to {
+    box-shadow:
+      0 0 40px #00ff73,
+      0 0 80px #00ff73;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom utility classes */
+.glass-panel {
+  background: rgba(10, 37, 28, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(22, 61, 46, 0.8);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #39ff14 0%, #22c55e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-glow {
+  background: radial-gradient(
+    circle at center,
+    rgba(34, 197, 94, 0.15) 0%,
+    rgba(6, 26, 19, 0) 70%
+  );
+}
+
+.neon-button {
+  background: #22c55e;
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  transition: all 0.3s ease;
+}
+
+.neon-button:hover {
+  box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+  background: #39ff14;
+}
+
+.timeline-line {
+  background: linear-gradient(to bottom, #22c55e, transparent);
+}
+
+.shadow-primary-glow {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+}
+
+.shadow-primary-glow-sm {
+  box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
+}
+
+.shadow-accent-glow {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+}
+
+/* Upload page utilities */
+.glass-effect {
+  background: rgba(15, 38, 24, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(52, 237, 112, 0.1);
+}
+
+.neon-glow {
+  box-shadow: 0 0 20px rgba(52, 237, 112, 0.2);
+}
+
+.neon-border {
+  border-color: rgba(52, 237, 112, 0.4);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a1a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #122a1b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+/* Processing page utilities */
+.neon-text {
+  color: #00ff73;
+  text-shadow: 0 0 10px rgba(0, 255, 115, 0.3);
+}
+
+.neon-border-glow {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+}
+
+.glass-panel-processing {
+  background: rgba(18, 42, 27, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.1);
+}
+
+.shimmer-bar {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Dashboard utilities */
+.neon-border-dashboard {
+  border: 1px solid rgba(44, 251, 131, 0.2);
+  transition: border-color 0.2s ease;
+}
+
+.neon-border-dashboard:hover {
+  border-color: rgba(44, 251, 131, 0.5);
+}
+
+.neon-glow-text {
+  text-shadow: 0 0 20px rgba(44, 251, 131, 0.4);
+}
+
+/* Buttons */
+
+button {
+  cursor: pointer;
+}
