@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Analytics,
   Close,
@@ -8,23 +9,21 @@ import {
   Lightbulb,
   Favorite,
 } from "../../icons";
-
-const HERO_IMAGE =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCOthttLn4anYQ_Xz3SXss7eAS7Al-QcrrHlkW7SgeU_-W2-xGiJQj2VK5Rc5By2IoN7ThG7edemNFP-FAbI2xAdhrGYcZu9pnvCdtCBhpvOxntm2qo4VouHKDMYcZTdzWPEwJXD0yuDLA-hbqtC8sqS1GCRa89ve4NRQieUuzwzugPwQNjdGd4RWR1Up9ZixbUJ0zc1KqR2d-GJr6DirPk__XXS6O3DmfVgFxUaYTBt-hvFFyucPTp8xL6Oj0fHYUhI1-xmw8h-Cw";
+import HERO_IMAGE from "@/public/assets/processing_hero_image.png";
 
 export default function ProcessingPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-background-dark text-white overflow-x-hidden">
       {/* Fixed ambient background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] animate-pulse-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-primary/5 rounded-full blur-[120px] animate-pulse-slow" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a1a0f_100%)]" />
       </div>
 
       {/* Header */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-10 border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent text-background-dark shadow-lg shadow-primary/20">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-primary to-accent text-background-dark shadow-lg shadow-primary/20">
             <Analytics className="text-2xl font-bold" />
           </div>
           <h2 className="text-white text-xl font-extrabold tracking-tight">
@@ -48,10 +47,12 @@ export default function ProcessingPage() {
             {/* Main circle */}
             <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-accent/30 bg-surface-dark flex items-center justify-center animate-neon-glow">
               {/* Spinning gradient sweep */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/30 to-transparent animate-[spin_6s_linear_infinite] opacity-60" />
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-accent/30 to-transparent animate-[spin_6s_linear_infinite] opacity-60" />
               {/* Hero image */}
-              <img
+              <Image
                 src={HERO_IMAGE}
+                width={500}
+                height={500}
                 alt="Abstract 3D geometric shape glowing green representing data processing"
                 className="w-full h-full object-cover mix-blend-lighten opacity-90"
               />

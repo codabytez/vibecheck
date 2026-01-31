@@ -12,18 +12,10 @@ import {
   VerifiedUser,
   PhotoCamera,
 } from "../icons";
-
-/* ---------------------------------------------------------------------------
-   Static image URLs kept as constants — plain <img> tags are used so no
-   next.config remotePatterns entry is needed.  Swap to next/image + allowlist
-   later if you want automatic optimisation.
---------------------------------------------------------------------------- */
-const HERO_BG =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAE_hx_H7O8Cl7fN1eDYnODiakpjoNWgSErL7Xw9FWtdTsusB4ZPI91tIfnvJKaepTRfHjBQG4TH180WCyO0FFr0PMzv-_OsV86SodPbaP9Gk-yF3g4LeSJGLyaV5qWg2mbEw16YIVkaGTRVoG0GcrNweo9mV8HsQJwqMXtv7-JG2DE2KR4vY4xTVS9nRLpWu7Pcwtjh428WOVQioYXdaF8voNzQJa9u7ytHGg2PzReAsq2m5zw669p7FhpMxzq0k7681AneodDy5c";
-const MVP_PHOTO =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBt9T78ZSNUaXqYDFlVOcmKtzk7FmyA5YmD12unQLQekMw922B9gMfmNDwPSjQJMa_bwaovEBDdt9ie3yovvbHlOFuPTDwDfTsAtFytJy9bB06cs4g5Zo_dD7zvt8FffK1_-CIj-YFUsA3mBhoFMpb5GnYoXndEFIoNZZ4vYtPg3NtOg_l3YDyffqzD9O7P3W7BK-F4XBCD134YWSgPNYPZQJU-wyZ5XlGF1o05Jgznlh3jNsezGpUiF6fLxQgcHCJOnryXbfvwfQI";
-const GHOST_AVATAR =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBnf3osY0iKKL85cs1L3JO3_xSqzKA4ZN7Q5oqjCSFGz7tWNMuYCF-b6-YFSwMyN1YwlSrRwI6g-JSCktNQLEF4rPJz0nL6y4AoGJL30-rep10LU9PqoK5oUhkj6_pK_mlXpTGpypk1uu9iD_Cq31GVguYF4NljfQqhMT-PirD1HCwsCWy_fu74NvQQX2SAT6aDnybpvClFkzEKxd4tYnp__m1gyeBr1iKUK2UTx8DXqt_8bGLinImsKR3I58mL4BQKLW5pjVtmttI";
+import Image from "next/image";
+import HERO_BG from "@/public/assets/dashboard_hero_bg.png";
+import MVP_PHOTO from "@/public/assets/mvp_photo.png";
+import GHOST_AVATAR from "@/public/assets/ghost_avatar.png";
 
 /* ---------------------------------------------------------------------------
    Heatmap data — each row is one day, each cell is one hour (24 cols).
@@ -100,14 +92,14 @@ export default function DashboardPage() {
       {/* --------------------------------------------------------------- Main */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
         {/* ------------------------------------------------- Hero / title card */}
-        <div className="relative w-full rounded-3xl overflow-hidden min-h-[450px] flex items-center justify-center p-8 text-center group neon-border-dashboard">
+        <div className="relative w-full rounded-3xl overflow-hidden min-h-112.5 flex items-center justify-center p-8 text-center group neon-border-dashboard">
           <div
             className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-1000 group-hover:scale-105 opacity-40"
             style={{
               backgroundImage: `linear-gradient(rgba(4,13,8,0.8) 0%, rgba(4,13,8,0.6) 100%), url("${HERO_BG}")`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dashboard-bg via-transparent to-transparent z-0" />
+          <div className="absolute inset-0 bg-linear-to-t from-dashboard-bg via-transparent to-transparent z-0" />
 
           <div className="relative z-10 flex flex-col items-center gap-4 max-w-3xl">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-neon-green/10 backdrop-blur-md border border-neon-green/20 text-[10px] font-black uppercase tracking-[0.2em] text-neon-green mb-2">
@@ -188,7 +180,7 @@ export default function DashboardPage() {
           </div>
 
           {/* --- Chaos Level */}
-          <div className="lg:col-span-4 bg-gradient-to-br from-neon-green to-teal-accent rounded-2xl p-8 shadow-[0_0_30px_rgba(44,251,131,0.2)] flex flex-col justify-between h-full relative group text-dark-green">
+          <div className="lg:col-span-4 bg-linear-to-br from-neon-green to-teal-accent rounded-2xl p-8 shadow-[0_0_30px_rgba(44,251,131,0.2)] flex flex-col justify-between h-full relative group text-dark-green">
             <button
               className="absolute top-6 right-6 text-dark-green/40 hover:text-dark-green transition-colors opacity-0 group-hover:opacity-100"
               title="Snap this card"
@@ -222,7 +214,7 @@ export default function DashboardPage() {
                 className="absolute inset-0 bg-cover bg-center grayscale contrast-125 hover:grayscale-0 transition-all duration-700"
                 style={{ backgroundImage: `url("${MVP_PHOTO}")` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-dark-green via-dark-green/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t md:bg-linear-to-r from-dark-green via-dark-green/40 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <span className="bg-neon-green text-dark-green text-[10px] font-black px-2 py-0.5 rounded uppercase tracking-widest mb-2 inline-block">
                   🏆 1st Place
@@ -299,8 +291,10 @@ export default function DashboardPage() {
             </div>
             <div className="flex-1 flex flex-col justify-center items-center text-center gap-4">
               <div className="w-24 h-24 rounded-full border-2 border-neon-green/20 p-1">
-                <img
+                <Image
                   src={GHOST_AVATAR}
+                  height={240}
+                  width={240}
                   alt="Dave avatar"
                   className="w-full h-full rounded-full object-cover grayscale brightness-75"
                 />
@@ -331,7 +325,7 @@ export default function DashboardPage() {
             </p>
 
             <div className="w-full overflow-x-auto pb-4">
-              <div className="min-w-[800px] flex flex-col gap-3">
+              <div className="min-w-200 flex flex-col gap-3">
                 <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-white/30 px-14 mb-4">
                   <span>12 AM</span>
                   <span>6 AM</span>
@@ -469,7 +463,7 @@ export default function DashboardPage() {
               <span className="text-5xl font-black text-teal-accent/30 -rotate-1 uppercase tracking-tighter">
                 NO CAP
               </span>
-              <span className="text-xl font-black text-neon-green uppercase tracking-[0.1em]">
+              <span className="text-xl font-black text-neon-green uppercase tracking-widest">
                 hop on
               </span>
             </div>
