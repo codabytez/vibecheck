@@ -21,21 +21,25 @@ import { SESSION_ID_KEY } from "@/components/constants";
 import { useMemo } from "react";
 import Hero from "@/components/dashboard/Hero";
 import { HeroSkeleton } from "@/components/dashboard/Skeletons";
-import AchievementsCard from "@/components/dashboard/Achievements";
-import AvgMessageLength from "@/components/dashboard/AvgMessageLength";
-import EmojiVibe from "@/components/dashboard/EmojiVibe";
-import GreatWallOfText from "@/components/dashboard/GreatWallOfText";
-import MonologueQueen from "@/components/dashboard/MonologueQueen";
-import PeakHoursCard from "@/components/dashboard/PeakHoursCard";
-import ReplyLeaderboard from "@/components/dashboard/ReplyLeaderboard";
-import SharedCulture from "@/components/dashboard/SharedCulture";
-import TheGhost from "@/components/dashboard/TheGhost";
-import TopRowCards from "@/components/dashboard/TopRowCards";
-import VibeCheck from "@/components/dashboard/VibeCheck";
-import WeeklyRhythm from "@/components/dashboard/WeeklyRhythm";
-import WordCloud from "@/components/dashboard/WordCloud";
-import DailyRhythm from "@/components/dashboard/DailyRhythm";
-import ChatMVP from "@/components/dashboard/chatmvp";
+
+// ---------------------------------------------------------------------------
+// Extracted card components
+// ---------------------------------------------------------------------------
+import TopRowCards from "@/components/dashboard/components/TopRowCards";
+import ChatMVP from "@/components/dashboard/components/ChatMVP";
+import TheGhost from "@/components/dashboard/components/TheGhost";
+import MonologueQueen from "@/components/dashboard/components/MonologueQueen";
+import DailyRhythm from "@/components/dashboard/components/DailyRhythm";
+import AchievementsCard from "@/components/dashboard/components/Achievements";
+import PeakHoursCard from "@/components/dashboard/components/PeakHoursCard";
+import SharedCulture from "@/components/dashboard/components/SharedCulture";
+import AvgMessageLength from "@/components/dashboard/components/AvgMessageLength";
+import GreatWallOfText from "@/components/dashboard/components/GreatWallOfText";
+import ReplyLeaderboard from "@/components/dashboard/components/ReplyLeaderboard";
+import EmojiVibe from "@/components/dashboard/components/EmojiVibe";
+import WordCloud from "@/components/dashboard/components/WordCloud";
+import WeeklyRhythm from "@/components/dashboard/components/WeeklyRhythm";
+import VibeCheck from "@/components/dashboard/components/VibeCheck";
 
 // ---------------------------------------------------------------------------
 const Dashboard: NextPage = () => {
