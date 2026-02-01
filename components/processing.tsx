@@ -1,17 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Analytics,
-  Close,
-  Chat,
-  SentimentSatisfied,
-  Lightbulb,
-  Favorite,
-} from "../../icons";
+import { MessageSquare, Smile, Lightbulb, Heart } from "lucide-react";
 import HERO_IMAGE from "@/public/assets/processing_hero_image.png";
+import { NextPage } from "next";
 
-export default function ProcessingPage() {
+export const Processing: NextPage<ProcessingProps> = ({
+  progress,
+  etaSeconds,
+}) => {
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-background-dark text-white overflow-x-hidden">
       {/* Fixed ambient background */}
@@ -19,22 +16,6 @@ export default function ProcessingPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-primary/5 rounded-full blur-[120px] animate-pulse-slow" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0a1a0f_100%)]" />
       </div>
-
-      {/* Header */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-5 md:px-10 border-b border-white/5 bg-background-dark/80 backdrop-blur-md">
-        <div className="flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-primary to-accent text-background-dark shadow-lg shadow-primary/20">
-            <Analytics className="text-2xl font-bold" />
-          </div>
-          <h2 className="text-white text-xl font-extrabold tracking-tight">
-            VibeCheck
-          </h2>
-        </div>
-        <button className="group flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-dark border border-white/10 hover:bg-white/5 hover:border-primary/30 transition-all text-sm font-semibold text-slate-300 hover:text-primary">
-          <Close className="text-[18px]" />
-          <span>Cancel</span>
-        </button>
-      </header>
 
       {/* Main content */}
       <main className="relative z-10 flex-1 flex flex-col items-center justify-center p-6 w-full max-w-7xl mx-auto">
@@ -63,7 +44,7 @@ export default function ProcessingPage() {
               className="absolute -top-4 -right-8 p-3 rounded-2xl glass-panel-processing text-accent shadow-lg animate-bounce"
               style={{ animationDuration: "3s" }}
             >
-              <Chat className="text-2xl" />
+              <MessageSquare className="text-2xl" />
             </div>
 
             {/* Floating badge — sentiment */}
@@ -71,7 +52,7 @@ export default function ProcessingPage() {
               className="absolute -bottom-2 -left-8 p-3 rounded-2xl glass-panel-processing text-primary shadow-lg animate-bounce"
               style={{ animationDuration: "4s", animationDelay: "1s" }}
             >
-              <SentimentSatisfied className="text-2xl" />
+              <Smile className="text-2xl" />
             </div>
           </div>
 
@@ -92,17 +73,23 @@ export default function ProcessingPage() {
               <span className="text-xs font-black text-accent uppercase tracking-[0.2em]">
                 Analyzing Chat History
               </span>
-              <span className="text-sm font-black text-white">45%</span>
+              <span className="text-sm font-black text-white">
+                {Math.round(progress)}%
+              </span>
             </div>
 
             <div className="h-4 w-full bg-surface-dark rounded-full overflow-hidden border border-white/5 p-0.5 shadow-inner">
-              <div className="h-full bg-linear-to-r from-primary to-accent rounded-full relative w-[45%] neon-border-glow">
+              <div
+                className="h-full bg-linear-to-r from-primary to-accent rounded-full relative neon-border-glow"
+                style={{ width: `${Math.max(3, Math.min(progress, 100))}%` }}
+              >
                 <div className="absolute inset-0 shimmer-bar rounded-full" />
               </div>
             </div>
 
             <p className="text-center text-xs font-bold text-slate-500 uppercase tracking-widest pt-2">
-              Estimated time remaining: ~12 seconds
+              Estimated time remaining: ~{Math.max(1, Math.round(etaSeconds))}{" "}
+              seconds
             </p>
           </div>
 
@@ -125,7 +112,7 @@ export default function ProcessingPage() {
 
             <div className="glass-panel-processing p-6 rounded-2xl flex items-start gap-4 transition-all hover:border-accent/40 hover:-translate-y-1">
               <div className="p-2 bg-primary/20 rounded-xl text-accent shrink-0">
-                <Favorite className="text-[24px]" />
+                <Heart className="text-[24px]" />
               </div>
               <div>
                 <h4 className="text-white text-sm font-extrabold mb-1">
@@ -140,11 +127,6 @@ export default function ProcessingPage() {
           </div>
         </div>
       </main>
-
-      {/* Footer */}
-      <footer className="relative z-10 py-8 text-center text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">
-        <p>© 2023 VibeCheck Inc. Privacy First Analysis.</p>
-      </footer>
     </div>
   );
-}
+};

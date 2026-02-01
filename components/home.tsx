@@ -1,79 +1,32 @@
 "use client";
-
-import { useRouter } from "next/navigation";
-
-import { Timer } from "lucide-react";
 import {
-  Equalizer,
-  UploadFile,
-  SentimentSatisfied,
-  Schedule,
-  Forum,
-  CalendarMonth,
-  PhoneIphone,
-  Android,
-  LaptopMac,
-  DesktopWindows,
-} from "./icons";
-import { ROUTES } from "@/components/constants";
+  ShieldCheck,
+  Timer,
+  UploadCloud as UploadFile,
+  Smile as SentimentSatisfied,
+  Clock as Schedule,
+  MessageSquare as Forum,
+  Calendar as CalendarMonth,
+  Smartphone as PhoneIphone,
+  Smartphone as Android,
+  Laptop as LaptopMac,
+  Monitor as DesktopWindows,
+} from "lucide-react";
+import { NextPage } from "next";
+import { useRouter } from "next/navigation";
+import { ROUTES } from "./constants";
 
-export default function Home() {
+const Home: NextPage = () => {
   const router = useRouter();
-
   return (
     <div className="relative min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-emerald-border/50 bg-emerald-deep/80 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-20 items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-emerald-deep shadow-primary-glow">
-                <Equalizer className="text-2xl font-bold" />
-              </div>
-              <span className="text-2xl font-extrabold tracking-tight text-white">
-                VibeCheck
-              </span>
-            </div>
-            <nav className="hidden md:flex items-center gap-10">
-              <a
-                className="text-sm font-semibold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
-                href="#"
-              >
-                How it works
-              </a>
-              <a
-                className="text-sm font-semibold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
-                href="#"
-              >
-                Privacy
-              </a>
-              <a
-                className="text-sm font-semibold text-slate-400 hover:text-primary transition-colors uppercase tracking-widest"
-                href="#"
-              >
-                GitHub
-              </a>
-            </nav>
-            <div className="flex items-center gap-4">
-              <button
-                className="hidden sm:flex h-10 items-center justify-center rounded-full bg-primary px-6 text-sm font-bold text-emerald-deep hover:bg-accent transition-all shadow-primary-glow"
-                onClick={() => router.push(ROUTES.UPLOAD)}
-              >
-                Get Started
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-250 h-250 hero-glow opacity-80 pointer-events-none animate-pulse-slow" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center text-center">
           <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 backdrop-blur-sm">
-            <span className="material-symbols-outlined text-[18px] text-primary">
-              lock
-            </span>
+            <ShieldCheck className="text-sm text-primary" />
+
             <span className="text-xs font-semibold uppercase tracking-wide text-primary">
               100% Client-Side Processing
             </span>
@@ -89,13 +42,16 @@ export default function Home() {
             </span>
           </p>
           <div className="flex flex-col sm:flex-row gap-6 w-full justify-center items-center">
-            <button className="h-16 px-12 rounded-full neon-button text-emerald-deep font-extrabold text-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-3">
+            <button
+              className="h-16 px-12 rounded-full neon-button text-emerald-deep font-extrabold text-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
+              onClick={() => router.push(ROUTES.UPLOAD)}
+            >
               <UploadFile className="font-bold" />
               Get Started
             </button>
-            <button className="h-16 px-12 rounded-full glass-panel text-white font-bold text-lg hover:bg-emerald-border/40 transition-all flex items-center justify-center border-primary/20">
+            {/* <button className="h-16 px-12 rounded-full glass-panel text-white font-bold text-lg hover:bg-emerald-border/40 transition-all flex items-center justify-center border-primary/20">
               View Demo
-            </button>
+            </button> */}
           </div>
 
           {/* Preview Cards */}
@@ -358,7 +314,10 @@ export default function Home() {
               <p className="text-slate-400 text-xl mb-12 max-w-lg">
                 Upload your .zip or .txt file and let the magic happen.
               </p>
-              <button className="h-18 px-14 rounded-full neon-button text-emerald-deep font-extrabold text-xl hover:scale-105 active:scale-95 transition-all">
+              <button
+                className="h-18 px-14 rounded-full neon-button text-emerald-deep font-extrabold text-xl hover:scale-105 active:scale-95 transition-all"
+                onClick={() => router.push(ROUTES.UPLOAD)}
+              >
                 Start Analysis
               </button>
             </div>
@@ -367,44 +326,20 @@ export default function Home() {
       </section>
 
       {/* Sticky Bottom Badge */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 bg-emerald-deep/90 backdrop-blur-md border border-emerald-border rounded-full px-4 py-2 flex items-center gap-3 text-xs shadow-2xl">
+      <div className="fixed bottom-2 left-1/2 -translate-x-1/2 z-40 bg-emerald-deep/90 backdrop-blur-md border border-emerald-border rounded-full px-4 py-2 flex items-center gap-3 text-xs shadow-2xl">
         <span className="flex items-center gap-1 text-white font-display">
           <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />{" "}
           1.2M Vibes Checked
         </span>
-        <button className="bg-primary text-emerald-deep font-bold px-3 py-1 rounded-full text-[10px] hover:scale-105 transition-transform font-display">
+        <button
+          className="bg-primary text-emerald-deep font-bold px-3 py-1 rounded-full text-[10px] hover:scale-105 transition-transform font-display"
+          onClick={() => router.push(ROUTES.UPLOAD)}
+        >
           TRY NOW
         </button>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-emerald-deep py-16 border-t border-emerald-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-emerald-deep shadow-primary-glow-sm">
-              <Equalizer className="text-lg font-bold" />
-            </div>
-            <span className="text-xl font-extrabold text-white">VibeCheck</span>
-          </div>
-          <div className="flex gap-10 text-sm font-bold text-slate-500 uppercase tracking-widest">
-            <a className="hover:text-primary transition-colors" href="#">
-              Privacy
-            </a>
-            <a className="hover:text-primary transition-colors" href="#">
-              Terms
-            </a>
-            <a className="hover:text-primary transition-colors" href="#">
-              Twitter
-            </a>
-            <a className="hover:text-primary transition-colors" href="#">
-              GitHub
-            </a>
-          </div>
-          <div className="text-xs font-bold text-slate-600 uppercase tracking-widest">
-            © 2024 VibeCheck. All rights reserved.
-          </div>
-        </div>
-      </footer>
     </div>
   );
-}
+};
+
+export default Home;

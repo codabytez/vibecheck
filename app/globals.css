@@ -21,6 +21,9 @@
   --color-teal-accent: #0ea5e9;
   --color-dashboard-bg: #040d08;
 
+  /* Colors — Error */
+  --color-error: #f20d0d;
+
   /* Fonts */
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-body: "Noto Sans", sans-serif;
@@ -200,6 +203,54 @@
 
 .neon-glow-text {
   text-shadow: 0 0 20px rgba(44, 251, 131, 0.4);
+}
+
+/* Success page utilities */
+.vibe-gradient-bg {
+  background: radial-gradient(
+    circle at top right,
+    rgba(34, 197, 94, 0.15) 0%,
+    #0b1a11 100%
+  );
+}
+
+.confetti-pattern {
+  background-image: radial-gradient(#22c55e 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.1;
+}
+
+/* Error page utilities */
+.glitch-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-icon::before,
+.glitch-icon::after {
+  content: attr(data-icon);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.glitch-icon::before {
+  color: #f20d0d; /* error */
+  z-index: -1;
+  transform: translate(-2px, 1px);
+}
+
+.glitch-icon::after {
+  color: #00fff2; /* cyan glitch offset — decorative only, not a theme token */
+  z-index: -2;
+  transform: translate(2px, -1px);
+}
+
+.shadow-error-glow {
+  box-shadow:
+    0 0 15px rgba(242, 13, 13, 0.4),
+    0 0 30px rgba(242, 13, 13, 0.2);
 }
 
 /* Buttons */
